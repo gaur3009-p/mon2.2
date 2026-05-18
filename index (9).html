@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haarvin Skin, Hair & Laser Clinic | Surat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7c4d8a;
+            --primary-dark: #5c3268;
+            --primary-light: #f3edf7;
+            --accent: #e8a87c;
+            --accent-light: #fdf4ed;
+            --accent-dark: #c97d50;
+            --text-dark: #1c1624;
+            --text-medium: #4d4358;
+            --text-light: #9189a0;
+            --white: #ffffff;
+            --off-white: #fbf9fc;
+            --border: #e9e3ef;
+            --shadow: 0 4px 24px rgba(124,77,138,0.10);
+            --shadow-lg: 0 12px 48px rgba(124,77,138,0.16);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--off-white);
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.15;
+        }
+
+        /* ─── NAV ─── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(251,249,252,0.96);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .navbar.scrolled { box-shadow: var(--shadow); }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--accent-dark));
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.15rem;
+        }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.3px;
+        }
+        .logo-sub {
+            font-size: 0.68rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+        }
+        .nav-links { display: flex; gap: 2.2rem; align-items: center; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.93rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white !important;
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(124,77,138,0.3);
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,77,138,0.4) !important; }
+        .nav-cta::after { display: none !important; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
+
+        /* ─── HERO ─── */
+        .hero {
+            margin-top: 74px;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(140deg, var(--primary-light) 0%, var(--off-white) 45%, var(--accent-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: -15%; right: -8%;
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(124,77,138,0.07) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: -10%; left: -5%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(232,168,124,0.09) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative; z-index: 1;
+        }
+        .hero-content { animation: fadeInUp 1s ease; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: white;
+            padding: 0.45rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.83rem; color: var(--primary); font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .hero-badge i { color: var(--accent-dark); }
+        .hero h1 { font-size: 3.7rem; color: var(--text-dark); margin-bottom: 1.5rem; }
+        .hero h1 span {
+            color: var(--primary);
+            position: relative;
+        }
+        .hero h1 span::after {
+            content: '';
+            position: absolute; bottom: 4px; left: 0;
+            width: 100%; height: 10px;
+            background: rgba(232,168,124,0.28);
+            z-index: -1;
+            border-radius: 4px;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem; color: var(--text-medium);
+            margin-bottom: 2rem;
+            max-width: 480px; line-height: 1.75;
+        }
+        .hero-stats { display: flex; gap: 2rem; margin-bottom: 2.5rem; }
+        .stat-item { text-align: center; }
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem; font-weight: 700; color: var(--primary);
+        }
+        .stat-label { font-size: 0.82rem; color: var(--text-light); font-weight: 500; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.95rem 2rem;
+            border-radius: 50px;
+            text-decoration: none; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            transition: var(--transition);
+            border: none; cursor: pointer; font-size: 0.97rem;
+            box-shadow: 0 6px 20px rgba(124,77,138,0.3);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(124,77,138,0.4); }
+        .btn-secondary {
+            background: transparent; color: var(--text-dark);
+            padding: 0.95rem 2rem; border-radius: 50px;
+            text-decoration: none; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            transition: var(--transition);
+            border: 2px solid var(--border); cursor: pointer; font-size: 0.97rem;
+        }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+
+        .hero-image { position: relative; animation: fadeInRight 1s ease 0.3s both; }
+        .hero-image-main {
+            width: 100%; border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            object-fit: cover; height: 500px;
+        }
+        .hero-floating-card {
+            position: absolute; background: white;
+            padding: 1.1rem 1.3rem; border-radius: 18px;
+            box-shadow: var(--shadow-lg);
+            display: flex; align-items: center; gap: 0.8rem;
+            animation: float 3s ease-in-out infinite;
+            border: 1px solid var(--border);
+        }
+        .hero-floating-card.card-1 { top: 10%; left: -12%; }
+        .hero-floating-card.card-2 { bottom: 15%; right: -12%; animation-delay: 1.5s; }
+        .floating-icon {
+            width: 44px; height: 44px;
+            background: var(--accent-light);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent-dark); font-size: 1.1rem;
+        }
+        .floating-title { font-weight: 700; color: var(--text-dark); font-size: 0.92rem; }
+        .floating-desc { font-size: 0.78rem; color: var(--text-light); }
+
+        /* ─── SERVICES ─── */
+        .services { padding: 6rem 2rem; background: var(--white); }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-tag {
+            display: inline-block;
+            background: var(--primary-light); color: var(--primary);
+            padding: 0.38rem 1.1rem; border-radius: 50px;
+            font-size: 0.82rem; font-weight: 600; margin-bottom: 1rem;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+        .section-title { font-size: 2.9rem; color: var(--text-dark); margin-bottom: 1rem; }
+        .section-subtitle { color: var(--text-medium); font-size: 1.08rem; max-width: 600px; margin: 0 auto; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--off-white);
+            border-radius: 22px; padding: 2.5rem;
+            transition: var(--transition);
+            border: 1px solid transparent; position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0); transition: var(--transition);
+        }
+        .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--border); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon {
+            width: 62px; height: 62px;
+            background: var(--primary-light); border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: var(--primary);
+            margin-bottom: 1.5rem; transition: var(--transition);
+        }
+        .service-card:hover .service-icon { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
+        .service-title { font-size: 1.35rem; margin-bottom: 0.8rem; color: var(--text-dark); }
+        .service-desc { color: var(--text-medium); font-size: 0.94rem; line-height: 1.75; margin-bottom: 1.5rem; }
+        .service-link {
+            color: var(--primary); text-decoration: none;
+            font-weight: 600; display: inline-flex; align-items: center;
+            gap: 0.5rem; font-size: 0.88rem; transition: var(--transition);
+        }
+        .service-link:hover { gap: 0.9rem; }
+
+        /* ─── WHY US ─── */
+        .why-us { padding: 6rem 2rem; background: linear-gradient(to bottom, var(--off-white), var(--white)); }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .why-image { position: relative; }
+        .why-image img { width: 100%; border-radius: 24px; box-shadow: var(--shadow-lg); }
+        .experience-badge {
+            position: absolute; bottom: -20px; right: -20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; padding: 2rem; border-radius: 22px;
+            text-align: center; box-shadow: var(--shadow-lg); animation: pulse 2s infinite;
+        }
+        .experience-badge .years {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem; font-weight: 700; line-height: 1;
+        }
+        .experience-badge .text { font-size: 0.88rem; margin-top: 0.5rem; opacity: 0.9; }
+        .why-content h2 { font-size: 2.6rem; margin-bottom: 1.5rem; }
+        .why-content p { color: var(--text-medium); margin-bottom: 2rem; line-height: 1.8; }
+        .features-list { display: grid; gap: 1.5rem; }
+        .feature-item { display: flex; gap: 1rem; align-items: flex-start; }
+        .feature-check {
+            width: 32px; height: 32px;
+            background: var(--accent-light); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent-dark); font-size: 0.8rem;
+            flex-shrink: 0; margin-top: 0.2rem;
+        }
+        .feature-text h4 { font-size: 1.1rem; margin-bottom: 0.3rem; color: var(--text-dark); }
+        .feature-text p { color: var(--text-light); font-size: 0.9rem; margin: 0; }
+
+        /* ─── TESTIMONIALS ─── */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #9b5fa8 100%);
+            color: white; position: relative; overflow: hidden;
+        }
+        .testimonials::before {
+            content: '';
+            position: absolute; top: -50%; left: -10%;
+            width: 500px; height: 500px;
+            background: rgba(255,255,255,0.04); border-radius: 50%;
+        }
+        .testimonials::after {
+            content: '';
+            position: absolute; bottom: -30%; right: -5%;
+            width: 350px; height: 350px;
+            background: rgba(232,168,124,0.08); border-radius: 50%;
+        }
+        .testimonials .section-title { color: white; }
+        .testimonials .section-subtitle { color: rgba(255,255,255,0.8); }
+        .testimonial-carousel { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+        .testimonial-slide { text-align: center; padding: 2rem; display: none; }
+        .testimonial-slide.active { display: block; animation: fadeIn 0.5s ease; }
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem; line-height: 1.65;
+            margin-bottom: 2rem; font-style: italic;
+        }
+        .testimonial-author { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+        .author-avatar {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: white; font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .author-name { font-weight: 700; font-size: 1.1rem; }
+        .author-rating { color: var(--accent); }
+        .carousel-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: var(--transition); }
+        .dot.active { background: var(--accent); width: 30px; border-radius: 5px; }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--primary-light) 100%);
+            text-align: center;
+        }
+        .cta-section h2 { font-size: 2.9rem; margin-bottom: 1rem; }
+        .cta-section p { color: var(--text-medium); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-whatsapp {
+            background: #25D366; color: white; border: none;
+            padding: 1rem 2.5rem; border-radius: 50px;
+            font-weight: 600; font-size: 1rem; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            transition: var(--transition); text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.3);
+        }
+        .btn-whatsapp:hover { background: #128C7E; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+
+        /* ─── CONTACT ─── */
+        .contact { padding: 6rem 2rem; background: var(--white); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; }
+        .contact-info h2 { font-size: 2.6rem; margin-bottom: 1rem; }
+        .contact-info > p { color: var(--text-medium); margin-bottom: 2rem; }
+        .contact-details { display: grid; gap: 1.2rem; }
+        .contact-item {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1.3rem 1.5rem;
+            background: var(--off-white); border-radius: 16px;
+            transition: var(--transition);
+        }
+        .contact-item:hover { background: var(--primary-light); transform: translateX(5px); }
+        .contact-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 13px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.1rem; flex-shrink: 0;
+        }
+        .contact-text h4 { font-size: 1rem; margin-bottom: 0.3rem; }
+        .contact-text p, .contact-text a {
+            color: var(--text-medium); text-decoration: none;
+            font-size: 0.93rem; transition: var(--transition);
+        }
+        .contact-text a:hover { color: var(--primary); }
+        .contact-form { background: var(--off-white); padding: 2.5rem; border-radius: 24px; }
+        .form-group { margin-bottom: 1.4rem; }
+        .form-group label { display: block; margin-bottom: 0.45rem; font-weight: 500; color: var(--text-dark); font-size: 0.88rem; }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%; padding: 0.9rem 1rem;
+            border: 2px solid var(--border); border-radius: 12px;
+            font-family: 'DM Sans', sans-serif; font-size: 0.97rem;
+            transition: var(--transition); background: white; color: var(--text-dark);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none; border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124,77,138,0.1);
+        }
+        .form-group textarea { resize: vertical; min-height: 110px; }
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; border: none; padding: 1rem;
+            border-radius: 12px; font-weight: 600; font-size: 1rem;
+            cursor: pointer; transition: var(--transition);
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+            box-shadow: 0 6px 20px rgba(124,77,138,0.3);
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(124,77,138,0.4); }
+
+        /* ─── FOOTER ─── */
+        .footer { background: var(--text-dark); color: white; padding: 4rem 2rem 2rem; }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem; margin-bottom: 3rem;
+        }
+        .footer-brand .logo-main { color: white; margin-bottom: 1rem; font-size: 1.5rem; }
+        .footer-brand p { color: rgba(255,255,255,0.65); font-size: 0.93rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .social-links { display: flex; gap: 0.8rem; }
+        .social-links a {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.08); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none; transition: var(--transition);
+        }
+        .social-links a:hover { background: var(--primary); transform: translateY(-3px); }
+        .footer-column h4 { font-size: 1.05rem; margin-bottom: 1.4rem; color: white; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 0.75rem; }
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.65); text-decoration: none;
+            font-size: 0.88rem; transition: var(--transition);
+        }
+        .footer-column ul li a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-bottom {
+            max-width: 1200px; margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.09);
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-bottom p { color: rgba(255,255,255,0.45); font-size: 0.83rem; }
+
+        /* ─── WHATSAPP FLOAT ─── */
+        .whatsapp-float {
+            position: fixed; bottom: 28px; right: 28px;
+            width: 60px; height: 60px;
+            background: #25D366; color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.75rem;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+            cursor: pointer; z-index: 999; transition: var(--transition);
+            text-decoration: none; animation: bounce 2.5s infinite;
+        }
+        .whatsapp-float:hover { transform: scale(1.12) rotate(8deg); }
+        .whatsapp-tooltip {
+            position: absolute; right: 70px;
+            background: var(--text-dark); color: white;
+            padding: 0.45rem 0.9rem; border-radius: 8px;
+            font-size: 0.83rem; white-space: nowrap;
+            opacity: 0; transition: var(--transition); pointer-events: none;
+        }
+        .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; right: 76px; }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.85s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 968px) {
+            .hero-container, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero-image { order: -1; }
+            .hero-floating-card { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .why-image { order: -1; }
+            .experience-badge { right: 10px; bottom: -10px; padding: 1.4rem; }
+            .experience-badge .years { font-size: 2.2rem; }
+        }
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 2.1rem; }
+            .section-title { font-size: 2.1rem !important; }
+            .hero-stats { gap: 1rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary, .btn-whatsapp { width: 100%; justify-content: center; }
+        }
+
+        /* ─── MOBILE MENU ─── */
+        .mobile-menu {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: white; z-index: 999; padding: 2rem;
+            flex-direction: column; gap: 2rem;
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; }
+        .mobile-menu-links { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+        .mobile-menu-links a { text-decoration: none; color: var(--text-dark); font-size: 1.2rem; font-weight: 600; }
+        .close-menu { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-sparkles" style="font-size:1rem;"></i>
+            </div>
+            <div class="logo-text">
+                <span class="logo-main">Haarvin</span>
+                <span class="logo-sub">Skin, Hair & Laser</span>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://wa.me/917621871654?text=Hello%20Haarvin%20Skin%2C%20Hair%20%26%20Laser%20Clinic%2C%20I%20would%20like%20to%20book%20a%20consultation." class="nav-cta" target="_blank"><i class="fab fa-whatsapp"></i> Book Now</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fas fa-sparkles" style="font-size:1rem;"></i></div>
+            <div class="logo-text">
+                <span class="logo-main">Haarvin</span>
+                <span class="logo-sub">Skin, Hair & Laser</span>
+            </div>
+        </a>
+        <button class="close-menu" onclick="toggleMobileMenu()"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="mobile-menu-links">
+        <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
+        <li><a href="#services" onclick="toggleMobileMenu()">Services</a></li>
+        <li><a href="#why-us" onclick="toggleMobileMenu()">Why Us</a></li>
+        <li><a href="#testimonials" onclick="toggleMobileMenu()">Reviews</a></li>
+        <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+        <li><a href="https://wa.me/917621871654?text=Hello%20Haarvin%20Skin%2C%20Hair%20%26%20Laser%20Clinic%2C%20I%20would%20like%20to%20book%20a%20consultation." target="_blank" style="color: var(--primary);"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a></li>
+    </ul>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i>
+                <span>Trusted Skin & Laser Specialists in Surat</span>
+            </div>
+            <h1>Reveal Your Most <span>Radiant</span> Self</h1>
+            <p class="hero-subtitle">Surat's premier destination for advanced laser treatments, hair transplantation, and expert skin care. Where precision meets artistry — right in Katargam.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Happy Patients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.8★</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Treatments</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://wa.me/917621871654?text=Hello%20Haarvin%20Skin%2C%20Hair%20%26%20Laser%20Clinic%2C%20I%20would%20like%20to%20book%20a%20free%20consultation." class="btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Book Free Consultation
+                </a>
+                <a href="#services" class="btn-secondary">
+                    <i class="fas fa-play-circle"></i> Explore Services
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop" alt="Haarvin Clinic" class="hero-image-main">
+            <div class="hero-floating-card card-1">
+                <div class="floating-icon"><i class="fas fa-certificate"></i></div>
+                <div>
+                    <div class="floating-title">Certified Experts</div>
+                    <div class="floating-desc">Dermatologists & trichologists</div>
+                </div>
+            </div>
+            <div class="hero-floating-card card-2">
+                <div class="floating-icon"><i class="fas fa-shield-alt"></i></div>
+                <div>
+                    <div class="floating-title">Safe & Sterile</div>
+                    <div class="floating-desc">Hospital-grade protocols</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+    <div class="section-container">
+        <div class="section-header reveal">
+            <span class="section-tag">Our Expertise</span>
+            <h2 class="section-title">Comprehensive Skin, Hair & Laser Solutions</h2>
+            <p class="section-subtitle">From hair restoration to advanced laser procedures, we offer cutting-edge treatments tailored to your unique needs.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-user-md"></i></div>
+                <h3 class="service-title">Hair Transplantation</h3>
+                <p class="service-desc">Advanced FUE & FUT techniques for natural-looking, permanent hair restoration. Minimal downtime, maximum density.</p>
+                <a href="https://wa.me/917621871654?text=Hi%2C%20I%20am%20interested%20in%20Hair%20Transplantation.%20Please%20share%20details." class="service-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                <h3 class="service-title">Laser Hair Removal</h3>
+                <p class="service-desc">Painless, permanent hair reduction using state-of-the-art laser technology. Safe for all skin types with long-lasting results.</p>
+                <a href="https://wa.me/917621871654?text=Hi%2C%20I%20am%20interested%20in%20Laser%20Hair%20Removal.%20Please%20share%20details." class="service-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-spa"></i></div>
+                <h3 class="service-title">Skin Rejuvenation</h3>
+                <p class="service-desc">Customized facials, chemical peels, and anti-aging treatments to restore your skin's natural glow and youthful vitality.</p>
+                <a href="https://wa.me/917621871654?text=Hi%2C%20I%20am%20interested%20in%20Skin%20Rejuvenation.%20Please%20share%20details." class="service-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-syringe"></i></div>
+                <h3 class="service-title">Skin Tag & Mole Removal</h3>
+                <p class="service-desc">Quick, painless removal of skin tags and moles using advanced techniques. Walk-in, walk-out procedure with instant results.</p>
+                <a href="https://wa.me/917621871654?text=Hi%2C%20I%20am%20interested%20in%20Skin%20Tag%20Removal.%20Please%20share%20details." class="service-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-magic"></i></div>
+                <h3 class="service-title">Aesthetic Treatments</h3>
+                <p class="service-desc">Botox, fillers, and non-surgical contouring to enhance your natural beauty. Subtle enhancements for a refreshed appearance.</p>
+                <a href="https://wa.me/917621871654?text=Hi%2C%20I%20am%20interested%20in%20Aesthetic%20Treatments.%20Please%20share%20details." class="service-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-hand-holding-medical"></i></div>
+                <h3 class="service-title">Hair Loss Treatment</h3>
+                <p class="service-desc">PRP therapy, mesotherapy, and medical hair regrowth solutions. Combat hair loss with personalized, evidence-based treatment plans.</p>
+                <a href="https://wa.me/917621871654?text=Hi%2C%20I%20am%20interested%20in%20Hair%20Loss%20Treatment.%20Please%20share%20details." class="service-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Us -->
+<section class="why-us" id="why-us">
+    <div class="section-container">
+        <div class="why-grid">
+            <div class="why-image reveal">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&h=600&fit=crop" alt="Clinic Interior">
+                <div class="experience-badge">
+                    <div class="years">10+</div>
+                    <div class="text">Years of<br>Excellence</div>
+                </div>
+            </div>
+            <div class="why-content reveal">
+                <span class="section-tag">Why Choose Us</span>
+                <h2>Your Skin & Hair Deserve Expert Care</h2>
+                <p>At Haarvin Skin, Hair & Laser Clinic, we combine medical expertise with personalized, compassionate care. Located in Katargam, Surat, we transform lives through advanced dermatological and laser treatments designed around you.</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-check"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">
+                            <h4>Board-Certified Experts</h4>
+                            <p>Our team of experienced dermatologists and trichologists brings specialized training in aesthetic and laser medicine.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">
+                            <h4>Advanced Laser Technology</h4>
+                            <p>We use FDA-approved, cutting-edge laser equipment for safe, precise, and highly effective treatments.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">
+                            <h4>Personalized Treatment Plans</h4>
+                            <p>Every patient receives a fully customized approach based on their unique skin type, concerns, and aesthetic goals.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">
+                            <h4>Affordable Excellence</h4>
+                            <p>World-class treatments at competitive prices — because quality care should be accessible to everyone.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+    <div class="section-container">
+        <div class="section-header reveal">
+            <span class="section-tag" style="background: rgba(255,255,255,0.18); color: white;">Testimonials</span>
+            <h2 class="section-title">What Our Patients Say</h2>
+            <p class="section-subtitle">Real stories from real patients who transformed their confidence with us.</p>
+        </div>
+        <div class="testimonial-carousel reveal">
+            <div class="testimonial-slide active">
+                <p class="testimonial-text">"Best hair transplant clinic in Surat! Must visit — highly recommended at a very affordable price. I saw excellent results in just 5 months and it's still growing beautifully."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">R</div>
+                    <div class="author-name">Rahul M.</div>
+                    <div class="author-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+            </div>
+            <div class="testimonial-slide">
+                <p class="testimonial-text">"The team at Haarvin made me feel so comfortable throughout my laser treatment. Professional, caring, and the results exceeded my expectations!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">P</div>
+                    <div class="author-name">Priya S.</div>
+                    <div class="author-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+            </div>
+            <div class="testimonial-slide">
+                <p class="testimonial-text">"From consultation to treatment, everything was handled professionally. The doctor explained every step and the procedure was completely painless. Highly recommend!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">A</div>
+                    <div class="author-name">Amit K.</div>
+                    <div class="author-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <div class="dot active" onclick="showSlide(0)"></div>
+                <div class="dot" onclick="showSlide(1)"></div>
+                <div class="dot" onclick="showSlide(2)"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="section-container reveal">
+        <h2>Ready to Transform Your Look?</h2>
+        <p>Book your free consultation today and take the first step towards healthier skin and fuller hair. Our experts are ready to guide you.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/917621871654?text=Hello%20Haarvin%20Skin%2C%20Hair%20%26%20Laser%20Clinic%2C%20I%20would%20like%20to%20schedule%20a%20free%20consultation." class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+            <a href="tel:+917621871654" class="btn-secondary">
+                <i class="fas fa-phone"></i> Call Now
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+    <div class="contact-grid">
+        <div class="contact-info reveal">
+            <span class="section-tag">Get In Touch</span>
+            <h2>Visit Our Clinic</h2>
+            <p>Located in Katargam, Surat — easily accessible and always ready to welcome you.</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-text">
+                        <h4>Address</h4>
+                        <p>238 Laxmi Enclave 1,<br>Opp. Gajera School,<br>Katargam, Surat – 395004,<br>Gujarat, India</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <a href="tel:+917621871654">+91 76218 71654</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="contact-text">
+                        <h4>WhatsApp</h4>
+                        <a href="https://wa.me/917621871654" target="_blank">+91 76218 71654</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-text">
+                        <h4>Working Hours</h4>
+                        <p>Mon – Sat: 10:00 AM – 8:00 PM<br>Sunday: By Appointment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form reveal">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;margin-bottom:0.4rem;">Book Appointment</h3>
+            <p style="color:var(--text-light);margin-bottom:1.5rem;font-size:0.88rem;">Fill in your details and we'll get back to you within 30 minutes.</p>
+            <form id="bookingForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="Hair Transplantation">Hair Transplantation</option>
+                        <option value="Laser Hair Removal">Laser Hair Removal</option>
+                        <option value="Skin Rejuvenation">Skin Rejuvenation</option>
+                        <option value="Skin Tag / Mole Removal">Skin Tag / Mole Removal</option>
+                        <option value="Aesthetic Treatments">Aesthetic Treatments</option>
+                        <option value="Hair Loss Treatment">Hair Loss Treatment</option>
+                        <option value="General Consultation">General Consultation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your concerns..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div style="margin-bottom:1rem;">
+                <div class="logo-main" style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:white;font-weight:700;">Haarvin</div>
+                <div style="font-size:0.68rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2.5px;">Skin, Hair & Laser Clinic</div>
+            </div>
+            <p>Surat's trusted destination for advanced laser, dermatological, and hair restoration treatments. Your confidence is our priority.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="https://wa.me/917621871654" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#">Hair Transplant</a></li>
+                <li><a href="#">Laser Treatment</a></li>
+                <li><a href="#">Skin Rejuvenation</a></li>
+                <li><a href="#">Aesthetic Care</a></li>
+                <li><a href="#">Hair Loss Treatment</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Contact</h4>
+            <ul>
+                <li><a href="tel:+917621871654">+91 76218 71654</a></li>
+                <li><a href="https://wa.me/917621871654">WhatsApp Us</a></li>
+                <li><a href="#">Katargam, Surat – 395004</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Haarvin Skin, Hair & Laser Clinic. All rights reserved.</p>
+        <p>Designed with care for better healthcare.</p>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/917621871654?text=Hello%20Haarvin%20Skin%2C%20Hair%20%26%20Laser%20Clinic%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat with us!</span>
+</a>
+
+<script>
+    window.addEventListener('scroll', function() {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.dot');
+    function showSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+    }
+    setInterval(() => { showSlide((currentSlide + 1) % slides.length); }, 5000);
+
+    function sendToWhatsApp(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+        let text = `Hello Haarvin Skin, Hair & Laser Clinic,%0A%0AI would like to book an appointment:%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Service:* ${service}`;
+        if (message) text += `%0A*Message:* ${message}`;
+        text += `%0A%0APlease confirm my appointment. Thank you!`;
+        window.open(`https://wa.me/917621871654?text=${text}`, '_blank');
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+</body>
+</html>
